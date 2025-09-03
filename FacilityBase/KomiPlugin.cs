@@ -1,7 +1,6 @@
 ﻿using Exiled.API.Features;
 using Exiled.Events;
 using System;
-using System.Numerics;
 
 namespace FacilityBase
 {
