@@ -1,0 +1,1 @@
+I am a beginner to writing in C#. Feel free to use the plugin but please credit me in your server info if you choose to use it. If you change it substantially and should it not use a lot of my original code, you do not have to credit me.
