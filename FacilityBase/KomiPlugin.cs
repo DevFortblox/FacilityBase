@@ -7,9 +7,9 @@ namespace FacilityBase
 {
     public class KomiPlugin : Plugin<Config>
     {
-        public override string Name => "MyFirstPlugin";
-        public override string Author => "YourName";
-        public override Version Version => new Version(1, 0, 0);
+        public override string Name => "FacilityBase";
+        public override string Author => "Komiynthoni";
+        public override Version Version => new Version(0, 0, 1);
 
         public override void OnEnabled()
         {
