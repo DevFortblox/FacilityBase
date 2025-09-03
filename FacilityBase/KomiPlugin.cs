@@ -7,9 +7,9 @@ namespace FacilityBase
 {
     public class KomiPlugin : Plugin<Config>
     {
-        public override string Name => "MyFirstPlugin";
-        public override string Author => "YourName";
-        public override Version Version => new Version(1, 0, 0);
+        public override string Name => "FacilityBase";
+        public override string Author => "Komiynthoni";
+        public override Version Version => new Version(0, 0, 1);
 
         public override void OnEnabled()
         {
@@ -32,12 +32,11 @@ namespace FacilityBase
             Map.Broadcast(10, "Test plugin is WORKING");
             foreach (Player player in Player.List)
             {
-                
+
                 player.Role.Set(PlayerRoles.RoleTypeId.Scientist, Exiled.API.Enums.SpawnReason.ForceClass);
-                player.AddItem(ItemType.SCP1507Tape);
                 player.AddAmmo(Exiled.API.Enums.AmmoType.Nato9, 300);
                 player.AddItem(ItemType.Jailbird);
-                Log.Warn("Set role to class D!");
+                Log.Warn("Set role to Scientist");
             }
         }
     }
