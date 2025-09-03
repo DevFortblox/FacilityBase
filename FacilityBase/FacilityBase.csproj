@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<OutputType>Library</OutputType>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<AssemblyName>FacilityBase</AssemblyName>
+		<RootNamespace>FacilityBase</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+	  <PackageReference Include="ExMod.Exiled" Version="9.8.1" />
+	  
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="Assembly-CSharp" HintPath="$(SL_REFERENCES)\Assembly-CSharp.dll" />
+		<Reference Include="LabApi" HintPath="C:\Users\kende\Documents\scp\SCPSL_Data\Managed\LabApi.dll" />
+		<Reference Include="UnityEngine.CoreModule">
+		  <HintPath>C:\Users\kende\Documents\scp\SCPSL_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+</Project>
