@@ -15,9 +15,8 @@
 
 	<ItemGroup>
 		<Reference Include="Assembly-CSharp" HintPath="$(SL_REFERENCES)\Assembly-CSharp.dll" />
-		<Reference Include="LabApi" HintPath="C:\Users\kende\Documents\scp\SCPSL_Data\Managed\LabApi.dll" />
 		<Reference Include="UnityEngine.CoreModule">
-		  <HintPath>C:\Users\kende\Documents\scp\SCPSL_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+		  <HintPath>$(UNITY_REFERENCES)\UnityEngine.CoreModule.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 </Project>
