@@ -15,8 +15,13 @@
 
 	<ItemGroup>
 		<Reference Include="Assembly-CSharp" HintPath="$(SL_REFERENCES)\Assembly-CSharp.dll" />
+		<Reference Include="Assembly-CSharp-firstpass" HintPath="$(SL_REFERENCES)\Assembly-CSharp-firstpass.dll" />
 		<Reference Include="UnityEngine.CoreModule">
 		  <HintPath>$(UNITY_REFERENCES)\UnityEngine.CoreModule.dll</HintPath>
 		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="UnityEngine\" />
 	</ItemGroup>
 </Project>
