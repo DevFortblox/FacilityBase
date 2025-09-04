@@ -15,9 +15,9 @@ namespace FacilityBase
     {
         public bool IsEnabled { get; set; } = true;
         public bool Debug { get; set; } = false;
-        public byte SpeedBoostPerUse { get; set; } = 5; // 5% boost per painkiller use
-        public byte MaxSpeedBoost { get; set; } = 255; // Max intensity for MovementBoost (255%)
-        public float EffectDisplayInterval { get; set; } = 1f; // Update effect display every 1 second
+        public byte SpeedBoostPerUse { get; set; } = 5;
+        public byte MaxSpeedBoost { get; set; } = 255;
+        public float EffectDisplayInterval { get; set; } = 1f; 
     }
 
     public class FacilityBaseClass : Plugin<Config>
@@ -29,7 +29,7 @@ namespace FacilityBase
 
         private static FacilityBaseClass Instance;
         private Dictionary<Player, CoroutineHandle> EffectDisplayCoroutines;
-        private Dictionary<Player, string> LastEffectDisplay; // Tracks last displayed hint to avoid redundant updates
+        private Dictionary<Player, string> LastEffectDisplay;
 
         public override void OnEnabled()
         {
@@ -71,7 +71,7 @@ namespace FacilityBase
         private void Spawned(SpawnedEventArgs ev)
         {
             ev.Player.AddItem(ItemType.Lantern);
-            // Start effect display coroutine for the player
+          
             if (EffectDisplayCoroutines.ContainsKey(ev.Player))
                 Timing.KillCoroutines(EffectDisplayCoroutines[ev.Player]);
             EffectDisplayCoroutines[ev.Player] = Timing.RunCoroutine(UpdateEffectDisplay(ev.Player));
@@ -96,7 +96,7 @@ namespace FacilityBase
 
         private void OnRoundEnded(RoundEndedEventArgs ev)
         {
-            // Reset all players' speed and stop effect display coroutines
+           
             foreach (Player player in Player.List)
             {
                 player.DisableEffect(EffectType.MovementBoost);
@@ -113,7 +113,7 @@ namespace FacilityBase
 
         private void OnPlayerLeft(LeftEventArgs ev)
         {
-            // Stop effect display coroutine when a player leaves
+           
             if (EffectDisplayCoroutines.ContainsKey(ev.Player))
             {
                 Timing.KillCoroutines(EffectDisplayCoroutines[ev.Player]);
@@ -132,28 +132,28 @@ namespace FacilityBase
                 if (Instance.Config.Debug)
 
 
-                    // Apply speed boost
+                   
                     ApplySpeedBoost(player);
             }
         }
 
         private void ApplySpeedBoost(Player player)
         {
-            // Get current MovementBoost effect if any
+           
             var effect = player.GetEffect(EffectType.MovementBoost);
 
             byte currentBoost = 0;
             if (effect != null && effect.IsEnabled)
                 currentBoost = effect.Intensity;
 
-            // Calculate new boost but cap at MaxSpeedBoost
+           
             currentBoost = (byte)Math.Min(currentBoost + Instance.Config.SpeedBoostPerUse, Instance.Config.MaxSpeedBoost);
 
-            // Disable old effect if it exists
+           
             if (effect != null && effect.IsEnabled)
                 player.DisableEffect(EffectType.MovementBoost);
 
-            // Enable the updated effect with infinite duration
+           
             player.EnableEffect(EffectType.MovementBoost, currentBoost, float.MaxValue);
 
             if (Instance.Config.Debug)
@@ -187,7 +187,7 @@ namespace FacilityBase
 
                 string hintText = hint.ToString();
 
-                // Show the hint for slightly longer than the interval to reduce flicker
+              
                 player.ShowHint(hintText, Instance.Config.EffectDisplayInterval + 0.2f);
 
                 yield return Timing.WaitForSeconds(Instance.Config.EffectDisplayInterval);
